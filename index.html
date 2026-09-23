@@ -136,7 +136,6 @@
   </main>
 
   <script>
-    // Captura del formulario en JS (próximamente se conectará al servidor)
     document.getElementById('registroForm').addEventListener('submit', async (e) => {
       e.preventDefault();
       
@@ -148,7 +147,29 @@
       mensajeDiv.style.color = '#38bdf8';
       mensajeDiv.textContent = 'Enviando registro...';
 
-      // Aquí se llamará al servidor backend que crearemos en el siguiente paso
+      try {
+        const respuesta = await fetch('/api/registro', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({ nombre, email, password })
+        });
+
+        const resultado = await respuesta.json();
+
+        if (resultado.exito) {
+          mensajeDiv.style.color = '#4ade80'; // Verde para éxito
+          mensajeDiv.textContent = resultado.mensaje;
+          document.getElementById('registroForm').reset();
+        } else {
+          mensajeDiv.style.color = '#f87171'; // Rojo para error
+          mensajeDiv.textContent = resultado.mensaje;
+        }
+      } catch (error) {
+        mensajeDiv.style.color = '#f87171';
+        mensajeDiv.textContent = 'Error al conectar con el servidor.';
+      }
     });
   </script>
 
