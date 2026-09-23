@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>TechWorld - Innovación y Tecnología</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --bg: #0f172a;
+      --card-bg: #1e293b;
+      --text: #f8fafc;
+      --text-muted: #94a3b8;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      padding: 20px;
+    }
+
+    header {
+      text-align: center;
+      margin-bottom: 40px;
+      margin-top: 20px;
+    }
+
+    header h1 {
+      font-size: 2.5rem;
+      color: var(--primary);
+      margin-bottom: 10px;
+    }
+
+    header p {
+      color: var(--text-muted);
+    }
+
+    .container {
+      width: 100%;
+      max-width: 400px;
+      background-color: var(--card-bg);
+      padding: 30px;
+      border-radius: 12px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    }
+
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    label {
+      display: block;
+      margin-bottom: 8px;
+      font-size: 0.9rem;
+      color: var(--text-muted);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px;
+      border-radius: 6px;
+      border: 1px solid #334155;
+      background-color: #0f172a;
+      color: var(--text);
+      font-size: 1rem;
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--primary);
+    }
+
+    button {
+      width: 100%;
+      padding: 12px;
+      background-color: var(--primary);
+      color: white;
+      border: none;
+      border-radius: 6px;
+      font-size: 1rem;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.2s;
+    }
+
+    button:hover {
+      background-color: #1d4ed8;
+    }
+
+    #mensaje {
+      margin-top: 15px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <h1>TechWorld</h1>
+    <p>Únete a nuestra comunidad de tecnología</p>
+  </header>
+
+  <main class="container">
+    <form id="registroForm">
+      <div class="form-group">
+        <label for="nombre">Nombre completo</label>
+        <input type="text" id="nombre" name="nombre" placeholder="Tu nombre" required>
+      </div>
+
+      <div class="form-group">
+        <label for="email">Correo electrónico</label>
+        <input type="email" id="email" name="email" placeholder="ejemplo@correo.com" required>
+      </div>
+
+      <div class="form-group">
+        <label for="password">Contraseña</label>
+        <input type="password" id="password" name="password" placeholder="••••••••" required>
+      </div>
+
+      <button type="submit">Registrarse</button>
+    </form>
+
+    <div id="mensaje"></div>
+  </main>
+
+  <script>
+    // Captura del formulario en JS (próximamente se conectará al servidor)
+    document.getElementById('registroForm').addEventListener('submit', async (e) => {
+      e.preventDefault();
+      
+      const nombre = document.getElementById('nombre').value;
+      const email = document.getElementById('email').value;
+      const password = document.getElementById('password').value;
+      const mensajeDiv = document.getElementById('mensaje');
+
+      mensajeDiv.style.color = '#38bdf8';
+      mensajeDiv.textContent = 'Enviando registro...';
+
+      // Aquí se llamará al servidor backend que crearemos en el siguiente paso
+    });
+  </script>
+
+</body>
+</html>
